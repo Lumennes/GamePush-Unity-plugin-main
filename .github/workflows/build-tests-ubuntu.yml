@@ -36,7 +36,7 @@ env:
 
 jobs:
   buildForAllPlatformsUbuntu:
-    name: ${{ matrix.targetPlatform }} on ${{ matrix.unityVersion }}
+    name: ${{ matrix.projectPath }} ${{ matrix.targetPlatform }} ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -44,8 +44,8 @@ jobs:
         providerStrategy:
           # - local-docker
           - local
-        projectName:
-          - GamePushDemo
+        #projectName:
+        #  - GamePushDemo
         projectPath:
           - Demo
           - YandexPluginTest
@@ -107,7 +107,10 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: ${{ matrix.projectName }}
+          if: ${{ matrix.projectPath == 'Demo' }}
+          buildName: Demo
+          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
+          buildName: Yandex Plugin Test
 
       - name: Sleep for Retry
         if: ${{ steps.build-1.outcome == 'failure' }}
@@ -129,7 +132,10 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: ${{ matrix.projectName }}
+          if: ${{ matrix.projectPath == 'Demo' }}
+          buildName: Demo
+          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
+          buildName: Yandex Plugin Test
           allowDirtyBuild: true
 
       - name: Sleep for Retry
@@ -151,7 +157,10 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: ${{ matrix.projectName }}
+          if: ${{ matrix.projectPath == 'Demo' }}
+          buildName: Demo
+          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
+          buildName: Yandex Plugin Test
           allowDirtyBuild: true
 
       ###########################
@@ -165,7 +174,7 @@ jobs:
           
       - uses: Difegue/action-megacmd@master
         with:
-          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectName }}/${{ matrix.projectName }}_${{ matrix.unityVersion }}_${{ matrix.targetPlatform }}/
+          args: put -c build/${{ matrix.targetPlatform }} /Unity_projects/${{ matrix.projectPath }}/${{ matrix.projectPath }}_${{ matrix.unityVersion }}_${{ matrix.targetPlatform }}/
         env:
           USERNAME: ${{ secrets.MEGA_USERNAME }}
           PASSWORD: ${{ secrets.MEGA_PASSWORD }}
