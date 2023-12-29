@@ -107,10 +107,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          if: ${{ matrix.projectPath == 'Demo' }}
-          buildName: Demo
-          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
-          buildName: Yandex Plugin Test
+          buildName: ${{ matrix.projectPath }}
 
       - name: Sleep for Retry
         if: ${{ steps.build-1.outcome == 'failure' }}
@@ -132,10 +129,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          if: ${{ matrix.projectPath == 'Demo' }}
-          buildName: Demo
-          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
-          buildName: Yandex Plugin Test
+          buildName: ${{ matrix.projectPath }}
           allowDirtyBuild: true
 
       - name: Sleep for Retry
@@ -157,10 +151,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          if: ${{ matrix.projectPath == 'Demo' }}
-          buildName: Demo
-          if: ${{ matrix.projectPath == 'YandexPluginTest' }}
-          buildName: Yandex Plugin Test
+          buildName: ${{ matrix.projectPath }}
           allowDirtyBuild: true
 
       ###########################
