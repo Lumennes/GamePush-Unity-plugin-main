@@ -1,2 +1,2 @@
 Build path: D:/Unity/Projects/GamePush-Unity-plugin-main/Demo/Builds/WebGL3
-Build number: 142
+Build number: 143

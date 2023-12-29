@@ -48,6 +48,7 @@ jobs:
           - GamePushDemo
         projectPath:
           - Demo
+          - YandexPluginTest
         unityVersion:
           #- 2022.3.0f1
           - 2022.3.16f1
