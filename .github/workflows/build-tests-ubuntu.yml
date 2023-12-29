@@ -49,7 +49,7 @@ jobs:
         projectPath:
           - Demo
         unityVersion:
-          - 2022.3.0f1
+          #- 2022.3.0f1
           - 2022.3.16f1
           #- 2021.3.32f1
           #- 2022.3.15f1          
@@ -101,7 +101,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: UnityTester
+          buildName: ${{ matrix.projectName }}
 
       - name: Sleep for Retry
         if: ${{ steps.build-1.outcome == 'failure' }}
@@ -123,7 +123,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: UnityTester
+          buildName: ${{ matrix.projectName }}
           allowDirtyBuild: true
 
       - name: Sleep for Retry
@@ -145,7 +145,7 @@ jobs:
           customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           providerStrategy: ${{ matrix.providerStrategy }}
           buildMethod: UnityBuilderAction.BuildScript.Build
-          buildName: UnityTester
+          buildName: ${{ matrix.projectName }}
           allowDirtyBuild: true
 
       ###########################
