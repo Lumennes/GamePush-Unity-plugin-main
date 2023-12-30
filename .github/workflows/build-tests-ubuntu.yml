@@ -1,4 +1,4 @@
-name: Builds - Ubuntu
+name: Builds - Ubuntu WebGL
 
 on:
   workflow_dispatch:
