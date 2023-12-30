@@ -67,8 +67,8 @@ jobs:
           - StandaloneWindows64 # Build a Windows 64-bit standalone with mono backend.
           #- StandaloneLinux64 # Build a Linux 64-bit standalone with mono backend.
           #- iOS # Build an iOS player.
-          - Android # Build an Android .apk.
-          - WebGL # WebGL.
+          # - Android # Build an Android .apk.
+          # - WebGL # WebGL.
     steps:
       ###########################
       #         Checkout        #
