@@ -1,4 +1,4 @@
-name: Builds - Ubuntu
+name: Builds - Ubuntu URP
 
 on:
   workflow_dispatch:
